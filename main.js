@@ -79,7 +79,7 @@ const checkWord = (e) => {
     } else {
       currentWordElement.className = 'word wrong';
     }
-    nextWordElement.className = 'word current';
+    if (nextWordElement) nextWordElement.className = 'word current';
     currentIndex += 1;
   }
 };
