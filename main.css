@@ -5,14 +5,23 @@
   padding: 0;
   box-sizing: border-box; }
 
+html,
+body,
+.game-wrapper {
+  width: 100%;
+  height: 100%; }
+
 body {
   font-family: monospace;
   background-color: #f0f0f0; }
 
 .game-wrapper {
-  display: block;
-  margin: 128px auto 400px;
-  width: 560px; }
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 560px;
+  max-width: 95%;
+  padding: 96px 0; }
 
 .game-top {
   display: flex;
@@ -41,6 +50,9 @@ body {
 .btn-wa {
   cursor: pointer;
   border: 0; }
+
+.game-container {
+  flex: 1; }
 
 .game {
   display: block;
@@ -127,3 +139,12 @@ body {
   cursor: pointer; }
   .dd-item:hover, .dd-item.active {
     color: #64e; }
+
+a {
+  color: #000; }
+
+.game-footer {
+  display: flex;
+  align-items: center; }
+  .game-footer a {
+    margin-right: 8px; }
