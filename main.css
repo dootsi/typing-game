@@ -11,19 +11,36 @@ body {
 
 .game-wrapper {
   display: block;
-  margin: 200px auto 400px;
+  margin: 128px auto 400px;
   width: 560px; }
 
-.stats {
+.game-top {
   display: flex;
   align-items: center;
   margin-bottom: 8px; }
-  .stats .stats-item {
-    display: block;
-    padding: 8px;
-    border-radius: 4px;
-    background-color: #fff;
+
+.stats {
+  display: flex;
+  align-items: center; }
+  .stats .btn-alt {
     margin-right: 8px; }
+
+.btn-alt {
+  display: inline-block;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #fff; }
+
+.wa {
+  flex: 1;
+  justify-content: end;
+  display: flex; }
+  .wa .btn-alt {
+    margin-left: 8px; }
+
+.btn-wa {
+  cursor: pointer;
+  border: 0; }
 
 .game {
   display: block;
@@ -83,3 +100,30 @@ body {
 
 .current {
   color: #64e; }
+
+.dd {
+  position: relative; }
+
+.dd-btn {
+  cursor: pointer; }
+
+.dd-content {
+  position: absolute;
+  display: none;
+  top: calc(100% + 4px);
+  right: 0;
+  width: 140px;
+  background-color: #fff;
+  padding: 4px 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); }
+  .dd-content.open {
+    display: block; }
+
+.dd-item {
+  padding: 4px 8px;
+  display: block;
+  width: 100%;
+  cursor: pointer; }
+  .dd-item:hover, .dd-item.active {
+    color: #64e; }

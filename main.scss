@@ -3,6 +3,8 @@ $spacer-1: $spacer / 2;
 $spacer-2: $spacer;
 $spacer-3: $spacer * 2;
 
+$primary: #64e;
+
 *,
 *::after,
 *::before {
@@ -18,21 +20,43 @@ body {
 
 .game-wrapper {
   display: block;
-  margin: 200px auto 400px;
+  margin: $spacer-2 * 16 auto 400px;
   width: 560px;
+}
+
+.game-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: $spacer;
 }
 
 .stats {
   display: flex;
   align-items: center;
-  .stats-item {
-    display: block;
-    padding: $spacer-2;
-    border-radius: $spacer-1;
-    background-color: #fff;
+  .btn-alt {
     margin-right: $spacer;
   }
-  margin-bottom: $spacer;
+}
+
+.btn-alt {
+  display: inline-block;
+  padding: $spacer-2;
+  border-radius: $spacer-1;
+  background-color: #fff;
+}
+
+.wa {
+  flex: 1;
+  justify-content: end;
+  display: flex;
+  .btn-alt {
+    margin-left: $spacer;
+  }
+}
+
+.btn-wa {
+  cursor: pointer;
+  border: 0;
 }
 
 .game {
@@ -62,7 +86,7 @@ body {
   margin-right: $spacer-2;
   &:focus {
     background-color: #fff;
-    border-color: #64e;
+    border-color: $primary;
   }
 }
 
@@ -73,8 +97,8 @@ body {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
-  border: 2px solid #64e;
-  background-color: #64e;
+  border: 2px solid $primary;
+  background-color: $primary;
   color: #fff;
   cursor: pointer;
 }
@@ -102,5 +126,39 @@ body {
 }
 
 .current {
-  color: #64e;
+  color: $primary;
+}
+
+.dd {
+  position: relative;
+}
+
+.dd-btn {
+  cursor: pointer;
+}
+
+.dd-content {
+  position: absolute;
+  display: none;
+  top: calc(100% + 4px);
+  right: 0;
+  width: 140px;
+  background-color: #fff;
+  padding: $spacer-1 0;
+  border-radius: $spacer-1;
+  box-shadow: 0 2px 6px rgba(#000, 0.1);
+  &.open {
+    display: block;
+  }
+}
+
+.dd-item {
+  padding: $spacer-1 $spacer-2;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  &:hover,
+  &.active {
+    color: $primary;
+  }
 }

@@ -3,25 +3,28 @@ const wordInput = document.getElementById('wordInput');
 const timerElement = document.getElementById('time');
 const wpmElement = document.getElementById('wpm');
 const restartButton = document.getElementById('restartButton');
+const waContent = document.getElementById('waContent');
+const waButton = document.getElementById('waButton');
 
+let wordAmount = 100;
 let randomWords = [];
 let currentIndex = 0;
 let started = false;
 let right = 0;
 let time = 0;
 let timer;
+let words = [];
 
 const getWords = async () => {
   const res = await fetch('words.json');
   const data = await res.json();
-  return Promise.resolve(data);
+  words = data;
 };
 
-const generateRandomWords = async () => {
-  const words = await getWords();
+const generateRandomWords = () => {
   let generatedWords = [];
   // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < wordAmount; i++) {
     const randomIndex = Math.floor(Math.random() * (words.length - 0 + 1)) + 0;
     const randomWord = words[randomIndex];
     generatedWords = [...generatedWords, randomWord];
@@ -84,7 +87,7 @@ const checkWord = (e) => {
   }
 };
 
-const restartGame = async () => {
+const restartGame = () => {
   wpmElement.textContent = '00';
   timerElement.textContent = '00';
   wordInput.value = '';
@@ -94,12 +97,42 @@ const restartGame = async () => {
   right = 0;
   time = 0;
   timer = null;
-  await generateRandomWords();
+  generateRandomWords();
   displayWords();
 };
 
+const setWordAmount = (wa) => {
+  localStorage.setItem('wordAmount', wa);
+  wordAmount = wa;
+  waContent.childNodes.forEach((child) => {
+    // eslint-disable-next-line no-param-reassign
+    child.className = 'dd-item';
+  });
+  document.getElementById('waContent');
+  document.getElementById(`wa${wa}`).className = 'dd-item active';
+  restartGame();
+};
+
 (async () => {
-  await generateRandomWords();
+  window.addEventListener('click', () => {
+    if (waContent.classList.contains('open')) {
+      waContent.classList.remove('open');
+    }
+  });
+  waButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (waContent.classList.contains('open')) {
+      waContent.classList.remove('open');
+    } else {
+      waContent.classList.add('open');
+    }
+  });
+  waContent.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+  if (localStorage.getItem('wordAmount')) { setWordAmount(localStorage.getItem('wordAmount')); } else setWordAmount(100);
+  await getWords();
+  generateRandomWords();
   displayWords();
   wordInput.addEventListener('keypress', checkWord);
   restartButton.addEventListener('click', restartGame);
