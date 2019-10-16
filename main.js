@@ -21,7 +21,7 @@ const generateRandomWords = async () => {
   const words = await getWords();
   let generatedWords = [];
   // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 100; i++) {
     const randomIndex = Math.floor(Math.random() * (words.length - 0 + 1)) + 0;
     const randomWord = words[randomIndex];
     generatedWords = [...generatedWords, randomWord];
