@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>typewriter</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="game-wrapper">
+      <div class="stats">
+        <div class="stats-item">WPM <span id="wpm">00</span></div>
+        <div class="stats-item">TIME <span id="time">00</span></div>
+      </div>
+      <div class="game">
+        <div id="words"></div>
+        <div class="d-flex">
+          <input
+            class="flex-1"
+            type="text"
+            id="wordInput"
+            placeholder="Start typing to start the game"
+          />
+          <button id="restartButton" type="button">Restart</button>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

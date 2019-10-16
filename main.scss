@@ -1,0 +1,106 @@
+$spacer: 8px;
+$spacer-1: $spacer / 2;
+$spacer-2: $spacer;
+$spacer-3: $spacer * 2;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: monospace;
+  background-color: #f0f0f0;
+}
+
+.game-wrapper {
+  display: block;
+  margin: 200px auto 400px;
+  width: 560px;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  .stats-item {
+    display: block;
+    padding: $spacer-2;
+    border-radius: $spacer-1;
+    background-color: #fff;
+    margin-right: $spacer;
+  }
+  margin-bottom: $spacer;
+}
+
+.game {
+  display: block;
+  border-radius: $spacer-1;
+  background-color: #fff;
+  padding: $spacer-3;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+#wordInput {
+  display: block;
+  border-radius: 2px;
+  padding: $spacer-1 $spacer-2;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  border: 2px solid #eee;
+  background-color: #eee;
+  margin-right: $spacer-2;
+  &:focus {
+    background-color: #fff;
+    border-color: #64e;
+  }
+}
+
+#restartButton {
+  display: block;
+  border-radius: 2px;
+  padding: $spacer-1 $spacer-2;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  border: 2px solid #64e;
+  background-color: #64e;
+  color: #fff;
+  cursor: pointer;
+}
+
+#words {
+  display: block;
+  width: auto;
+  font-size: 14px;
+  margin-bottom: $spacer-2;
+}
+
+.word {
+  display: inline-block;
+  padding: 2px 2px;
+  margin: 2px 2px;
+  border-radius: 2px;
+}
+
+.correct {
+  color: #2b4;
+}
+
+.wrong {
+  color: #e22;
+}
+
+.current {
+  color: #64e;
+}
