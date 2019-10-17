@@ -1,0 +1,21 @@
+{
+  "name": "typewriter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "dev": "concurrently \" node-sass main.scss main.css -w \" \" live-server \""
+  },
+  "keywords": [],
+  "author": "alrie",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "concurrently": "^5.0.0",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "live-server": "^1.2.1",
+    "node-sass": "^4.12.0"
+  }
+}
