@@ -7,7 +7,7 @@
     "dev": "concurrently \" node-sass main.scss main.css -w \" \" live-server \""
   },
   "keywords": [],
-  "author": "alrie",
+  "author": "zws0",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
