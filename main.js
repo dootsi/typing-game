@@ -136,4 +136,9 @@ const setWordAmount = (wa) => {
   displayWords();
   wordInput.addEventListener('keypress', checkWord);
   restartButton.addEventListener('click', restartGame);
+  window.addEventListener('keydown', (e) => {
+    if (e.ctrlKey) {
+      if (e.keyCode === 82) restartGame();
+    }
+  });
 })();
