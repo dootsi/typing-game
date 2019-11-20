@@ -25,7 +25,7 @@ const generateRandomWords = () => {
   let generatedWords = [];
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < wordAmount; i++) {
-    const randomIndex = Math.floor(Math.random() * (words.length - 0 + 1)) + 0;
+    const randomIndex = Math.floor(Math.random() * words.length) + 0;
     const randomWord = words[randomIndex];
     generatedWords = [...generatedWords, randomWord];
   }
