@@ -33,7 +33,7 @@ const generateRandomWords = () => {
 };
 
 const displayWords = () => {
-  while (wordsElement.hasChildNodes()) {
+  while (wordsElement.firstChild) {
     wordsElement.removeChild(wordsElement.firstChild);
   }
   randomWords.forEach((word, i) => {
