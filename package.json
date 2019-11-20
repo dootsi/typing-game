@@ -1,14 +1,13 @@
 {
   "name": "typewriter",
   "version": "1.0.0",
-  "description": "",
+  "description": "a minimalistic typing game that runs in your browser",
   "main": "main.js",
   "scripts": {
     "dev": "concurrently \" node-sass main.scss main.css -w \" \" live-server \""
   },
-  "keywords": [],
   "author": "zws0",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "dependencies": {},
   "devDependencies": {
     "concurrently": "^5.0.0",
