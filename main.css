@@ -1,3 +1,4 @@
+@import url("https://rsms.me/inter/inter.css");
 *,
 *::after,
 *::before {
@@ -12,8 +13,11 @@ body,
   height: 100%; }
 
 body {
-  font-family: monospace;
-  background-color: #f0f0f0; }
+  background-color: #f0f0f0;
+  font-family: "Inter", sans-serif; }
+  @supports (font-variation-settings: normal) {
+    body {
+      font-family: 'Inter var', sans-serif; } }
 
 .game-wrapper {
   display: flex;
@@ -70,12 +74,16 @@ body {
   display: block;
   border-radius: 2px;
   padding: 4px 8px;
-  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
   border: 2px solid #eee;
   background-color: #eee;
   margin-right: 8px; }
+  @supports (font-variation-settings: normal) {
+    #wordInput {
+      font-family: 'Inter var', sans-serif; } }
   #wordInput:focus {
     background-color: #fff;
     border-color: #64e; }
@@ -84,6 +92,7 @@ body {
   display: block;
   border-radius: 2px;
   padding: 4px 8px;
+  font-family: "Inter", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
@@ -91,17 +100,21 @@ body {
   background-color: #64e;
   color: #fff;
   cursor: pointer; }
+  @supports (font-variation-settings: normal) {
+    #restartButton {
+      font-family: 'Inter var', sans-serif; } }
 
 #words {
   display: block;
   width: auto;
-  font-size: 14px;
+  font-size: 24px;
+  font-family: Times New Roman, Times, serif;
   margin-bottom: 8px; }
 
 .word {
   display: inline-block;
-  padding: 2px 2px;
-  margin: 2px 2px;
+  padding: 2px 4px;
+  margin: 2px 0px;
   border-radius: 2px; }
 
 .correct {
@@ -111,7 +124,8 @@ body {
   color: #e22; }
 
 .current {
-  color: #64e; }
+  color: #64e;
+  background-color: #eee; }
 
 .dd {
   position: relative; }
