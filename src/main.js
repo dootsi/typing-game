@@ -1,3 +1,6 @@
+import words from './words.json';
+import './main.scss';
+
 const wordsElement = document.getElementById('words');
 const wordInput = document.getElementById('wordInput');
 const timerElement = document.getElementById('time');
@@ -13,13 +16,6 @@ let started = false;
 let right = 0;
 let time = 0;
 let timer;
-let words = [];
-
-const getWords = async () => {
-  const res = await fetch('words.json');
-  const data = await res.json();
-  words = data;
-};
 
 const generateRandomWords = () => {
   let generatedWords = [];
@@ -113,7 +109,7 @@ const setWordAmount = (wa) => {
   restartGame();
 };
 
-(async () => {
+(() => {
   window.addEventListener('click', () => {
     if (waContent.classList.contains('open')) {
       waContent.classList.remove('open');
@@ -133,7 +129,6 @@ const setWordAmount = (wa) => {
   if (localStorage.getItem('wordAmount')) {
     setWordAmount(localStorage.getItem('wordAmount'));
   } else setWordAmount(100);
-  await getWords();
   generateRandomWords();
   displayWords();
   wordInput.addEventListener('keypress', checkWord);

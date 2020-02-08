@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>typing-game</title>
+  <link rel="stylesheet" href="/main.1f19ae8e.css"></head>
+  <body>
+    <div class="game-wrapper">
+      <div class="game-top">
+        <div class="stats">
+          <div class="btn-alt">WPM <span id="wpm">00</span></div>
+          <div class="btn-alt">TIME <span id="time">00</span></div>
+        </div>
+        <div class="wa">
+          <div class="dd">
+            <div class="btn-alt dd-btn" id="waButton">word amount</div>
+            <div class="dd-content" id="waContent">
+              <div class="dd-item" id="wa10" onClick="setWordAmount(10)">
+                10
+              </div>
+              <div class="dd-item" id="wa25" onClick="setWordAmount(25)">
+                25
+              </div>
+              <div class="dd-item" id="wa50" onClick="setWordAmount(50)">
+                50
+              </div>
+              <div class="dd-item" id="wa100" onClick="setWordAmount(100)">
+                100
+              </div>
+              <div class="dd-item" id="wa250" onClick="setWordAmount(250)">
+                250
+              </div>
+              <div class="dd-item" id="wa500" onClick="setWordAmount(500)">
+                500
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="game-container">
+        <div class="game">
+          <div id="words"></div>
+          <div class="d-flex">
+            <input class="flex-1" type="text" id="wordInput" placeholder="Start typing to start the game">
+            <button id="restartButton" type="button">Restart</button>
+          </div>
+        </div>
+      </div>
+      <div class="game-footer">
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/dootsi/typing-game">github</a>
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/dootsi/typing-game/issues/new">submit an issue</a>
+      </div>
+    </div>
+    <script src="/main.1f19ae8e.js"></script>
+  </body>
+</html>
