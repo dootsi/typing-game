@@ -130,7 +130,9 @@ const setWordAmount = (wa) => {
   waContent.addEventListener('click', (e) => {
     e.stopPropagation();
   });
-  if (localStorage.getItem('wordAmount')) { setWordAmount(localStorage.getItem('wordAmount')); } else setWordAmount(100);
+  if (localStorage.getItem('wordAmount')) {
+    setWordAmount(localStorage.getItem('wordAmount'));
+  } else setWordAmount(100);
   await getWords();
   generateRandomWords();
   displayWords();
