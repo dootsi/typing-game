@@ -20,16 +20,19 @@ let right = 0;
 let time = 0;
 let timer;
 
-const getDifficulty = () => {
+const getDifficulty = (languageSpecificWords) => {
+  const easy = 100;
+  const { length: hard } = languageSpecificWords;
+  const medium = parseInt(easy + (hard - easy) / 2, 10);
   switch (difficulty) {
     case 'easy':
-      return 100;
+      return easy;
     case 'medium':
-      return 200;
+      return medium;
     case 'hard':
-      return 300;
+      return hard;
     default:
-      return 100;
+      return easy;
   }
 };
 
@@ -54,7 +57,7 @@ const generateRandomWords = () => {
   let generatedWords = [];
   for (let i = 0; i < wordAmount; i++) {
     const languageSpecificWords = words[language];
-    const length = getDifficulty();
+    const length = getDifficulty(languageSpecificWords);
     const randomIndex = Math.floor(Math.random() * length) + 0;
     const randomWord = languageSpecificWords[randomIndex];
     generatedWords.push(randomWord);
