@@ -25,9 +25,9 @@ const getDifficulty = () => {
     case 'easy':
       return 100;
     case 'medium':
-      return 250;
+      return 200;
     case 'hard':
-      return 500;
+      return 300;
     default:
       return 100;
   }
