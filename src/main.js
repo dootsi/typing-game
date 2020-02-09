@@ -140,8 +140,8 @@ const toggleDropdown = (dropdownId) => {
   wordInput.addEventListener('keypress', checkWord);
   restartButton.addEventListener('click', restartGame);
   window.addEventListener('keydown', (e) => {
-    e.preventDefault();
     if (e.ctrlKey) {
+      e.preventDefault();
       if (e.keyCode === 82) restartGame();
     }
   });
