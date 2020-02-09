@@ -80,9 +80,9 @@ const displayWords = () => {
 const startTimer = () => {
   if (started) {
     timer = setTimeout(() => {
-      time += 1;
+      time += 10;
       startTimer();
-    }, 1000);
+    }, 10);
   } else {
     timer = undefined;
     started = false;
@@ -100,8 +100,8 @@ const checkWord = (e) => {
     wordInput.value = '';
     if (started && currentIndex === randomWords.length - 1) {
       started = false;
-      wpmElement.textContent = ((right / time) * 60).toFixed(2);
-      timerElement.textContent = time.toFixed(2);
+      wpmElement.textContent = ((right / (time / 1000)) * 60).toFixed(2);
+      timerElement.textContent = (time / 1000).toFixed(2);
     }
     const currentWord = randomWords[currentIndex];
     const currentWordElement = wordsElement.childNodes[currentIndex];
