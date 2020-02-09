@@ -16,6 +16,6 @@ If you feel like a feature is missing and you'd like to add it, please follow th
 
 If you want to submit a language, please make a pull request following the rules below.
 
-- Use only the 300 most frequently used words in a language.
+- Please provide between 100 and 300 of the most frequently used words in a language. Difficulties will depend on the amount of words provided.
 - The list goes in the order of most used to least used.
 - Also, if possible, please provide the source of where you got the list of words from.
