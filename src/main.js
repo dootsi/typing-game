@@ -53,13 +53,26 @@ const setDifficulty = (diff) => {
   restartGame();
 };
 
+const generateRandomWord = (languageSpecificWords, length, previousWord) => {
+  const randomIndex = Math.floor(Math.random() * length) + 0;
+  const randomWord = languageSpecificWords[randomIndex];
+  if (randomWord === previousWord) {
+    return generateRandomWord(languageSpecificWords, length, previousWord);
+  }
+  return randomWord;
+};
+
 const generateRandomWords = () => {
   let generatedWords = [];
   for (let i = 0; i < wordAmount; i++) {
     const languageSpecificWords = words[language];
     const length = getDifficulty(languageSpecificWords);
-    const randomIndex = Math.floor(Math.random() * length) + 0;
-    const randomWord = languageSpecificWords[randomIndex];
+    const previousWord = generatedWords[i - 1];
+    const randomWord = generateRandomWord(
+      languageSpecificWords,
+      length,
+      previousWord,
+    );
     generatedWords.push(randomWord);
   }
   randomWords = generatedWords;
