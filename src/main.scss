@@ -86,10 +86,10 @@ body {
   flex: 1;
 }
 
-.btn-group {
+.group {
   display: flex;
   align-items: center;
-  .btn-alt {
+  & > * {
     margin-left: $spacer-1;
     margin-right: $spacer-1;
     &:first-child {

@@ -6,9 +6,12 @@ const wordInput = document.getElementById('wordInput');
 const timerElement = document.getElementById('time');
 const wpmElement = document.getElementById('wpm');
 const restartButton = document.getElementById('restartButton');
-const waContent = document.getElementById('waContent');
-const waButton = document.getElementById('waButton');
+const languagePicker = document.getElementById('languagePicker');
+const difficultyPicker = document.getElementById('difficultyPicker');
+const wordAmountPicker = document.getElementById('wordAmountPicker');
 
+let language;
+let difficulty;
 let wordAmount = 100;
 let randomWords = [];
 let currentIndex = 0;
@@ -17,13 +20,44 @@ let right = 0;
 let time = 0;
 let timer;
 
+const getDifficulty = () => {
+  switch (difficulty) {
+    case 'easy':
+      return 100;
+    case 'medium':
+      return 250;
+    case 'hard':
+      return 500;
+    default:
+      return 100;
+  }
+};
+
+const setActiveDropdownItem = (dropdownId, textContent) => {
+  const dropdown = document.getElementById(dropdownId);
+  dropdown.childNodes.forEach((child) => {
+    child.className = 'dropdown-item';
+    if (child.textContent.trim() == textContent) {
+      child.className = 'dropdown-item active';
+    }
+  });
+};
+
+const setDifficulty = (diff) => {
+  difficulty = diff;
+  localStorage.setItem('difficulty', diff);
+  setActiveDropdownItem('difficultyPicker', diff);
+  restartGame();
+};
+
 const generateRandomWords = () => {
   let generatedWords = [];
-  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < wordAmount; i++) {
-    const randomIndex = Math.floor(Math.random() * words.length) + 0;
-    const randomWord = words[randomIndex];
-    generatedWords = [...generatedWords, randomWord];
+    const languageSpecificWords = words[language];
+    const length = getDifficulty();
+    const randomIndex = Math.floor(Math.random() * length) + 0;
+    const randomWord = languageSpecificWords[randomIndex];
+    generatedWords.push(randomWord);
   }
   randomWords = generatedWords;
 };
@@ -98,17 +132,23 @@ const restartGame = () => {
 };
 
 const setWordAmount = (wa) => {
-  localStorage.setItem('wordAmount', wa);
   wordAmount = wa;
-  document.getElementById('wordAmountPicker').childNodes.forEach((child) => {
-    child.className = 'dropdown-item';
-  });
-  document.getElementById('waContent');
-  document.getElementById(`wa${wa}`).className = 'dropdown-item active';
+  localStorage.setItem('wordAmount', wa);
+  setActiveDropdownItem('wordAmountPicker', wa);
   restartGame();
 };
 
+const clearDropdowns = () => {
+  const dropdowns = document.getElementsByClassName('dropdown-content');
+  Array.from(dropdowns).forEach((child) => {
+    if (child.classList.contains('open')) {
+      child.classList.remove('open');
+    }
+  });
+};
+
 const toggleDropdown = (dropdownId) => {
+  clearDropdowns();
   const dropdown = document.getElementById(dropdownId);
   dropdown.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -120,25 +160,41 @@ const toggleDropdown = (dropdownId) => {
   }
 };
 
-(() => {
-  window.addEventListener('click', (e) => {
-    if (e.target.classList.contains('dropdown-btn')) {
-      return;
-    }
-    const dropdowns = document.getElementsByClassName('dropdown-content');
-    Array.from(dropdowns).forEach((child) => {
-      if (child.classList.contains('open')) {
-        child.classList.remove('open');
-      }
+const getLanguages = () => {
+  const languages = Object.keys(words);
+  languages.forEach((lang) => {
+    const dropdownItem = document.createElement('div');
+    dropdownItem.classList.add('dropdown-item');
+    dropdownItem.addEventListener('click', () => {
+      setLanguage(lang);
     });
+    dropdownItem.textContent = lang;
+    languagePicker.append(dropdownItem);
   });
-  if (localStorage.getItem('wordAmount')) {
-    setWordAmount(localStorage.getItem('wordAmount'));
-  } else setWordAmount(100);
+};
+
+const setLanguage = (lang) => {
+  language = lang;
+  localStorage.setItem('language', lang);
+  setActiveDropdownItem('languagePicker', lang);
+  restartGame();
+};
+
+(() => {
+  getLanguages();
+  setLanguage(localStorage.getItem('language') || 'english');
+  setDifficulty(localStorage.getItem('difficulty') || 'easy');
+  setWordAmount(JSON.parse(localStorage.getItem('wordAmount')) || 100);
   generateRandomWords();
   displayWords();
   wordInput.addEventListener('keypress', checkWord);
   restartButton.addEventListener('click', restartGame);
+  window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('dropdown-btn')) {
+      return;
+    }
+    clearDropdowns();
+  });
   window.addEventListener('keydown', (e) => {
     if (e.ctrlKey) {
       e.preventDefault();
@@ -148,5 +204,7 @@ const toggleDropdown = (dropdownId) => {
 })();
 
 // Attach global functions to the window. This is needed for parcel.
+window.setDifficulty = setDifficulty;
+window.setLanguage = setLanguage;
 window.setWordAmount = setWordAmount;
 window.toggleDropdown = toggleDropdown;

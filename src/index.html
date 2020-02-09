@@ -9,50 +9,65 @@
   <body>
     <div class="game-wrapper">
       <div class="game-top">
-        <div class="d-flex flex-1 justify-content-start">
-          <div class="btn-group">
+        <div class="d-flex justify-content-start">
+          <div class="group">
             <div class="btn-alt">WPM <span id="wpm">00</span></div>
             <div class="btn-alt">TIME <span id="time">00</span></div>
           </div>
         </div>
         <div class="d-flex flex-1 justify-content-end">
-          <div class="dropdown">
-            <div
-              class="btn-alt dropdown-btn"
-              onClick="toggleDropdown('wordAmountPicker')"
-            >
-              word amount
+          <div class="group">
+            <div class="dropdown">
+              <div
+                class="btn-alt dropdown-btn"
+                onClick="toggleDropdown('difficultyPicker')"
+              >
+                difficulty
+              </div>
+              <div class="dropdown-content" id="difficultyPicker">
+                <div class="dropdown-item" onClick="setDifficulty('easy')">
+                  easy
+                </div>
+                <div class="dropdown-item" onClick="setDifficulty('medium')">
+                  medium
+                </div>
+                <div class="dropdown-item" onClick="setDifficulty('hard')">
+                  hard
+                </div>
+              </div>
             </div>
-            <div class="dropdown-content" id="wordAmountPicker">
-              <div class="dropdown-item" id="wa10" onClick="setWordAmount(10)">
-                10
-              </div>
-              <div class="dropdown-item" id="wa25" onClick="setWordAmount(25)">
-                25
-              </div>
-              <div class="dropdown-item" id="wa50" onClick="setWordAmount(50)">
-                50
-              </div>
+            <div class="dropdown">
               <div
-                class="dropdown-item"
-                id="wa100"
-                onClick="setWordAmount(100)"
+                class="btn-alt dropdown-btn"
+                onClick="toggleDropdown('languagePicker')"
               >
-                100
+                language
               </div>
+              <div class="dropdown-content" id="languagePicker"></div>
+            </div>
+            <div class="dropdown">
               <div
-                class="dropdown-item"
-                id="wa250"
-                onClick="setWordAmount(250)"
+                class="btn-alt dropdown-btn"
+                onClick="toggleDropdown('wordAmountPicker')"
               >
-                250
+                word amount
               </div>
-              <div
-                class="dropdown-item"
-                id="wa500"
-                onClick="setWordAmount(500)"
-              >
-                500
+              <div class="dropdown-content" id="wordAmountPicker">
+                <div class="dropdown-item" onClick="setWordAmount(10)">
+                  10
+                </div>
+                <div class="dropdown-item" onClick="setWordAmount(25)">
+                  25
+                </div>
+                <div class="dropdown-item" onClick="setWordAmount(50)">
+                  50
+                </div>
+                <div class="dropdown-item" onClick="setWordAmount(100)">
+                  100
+                </div>
+                <div class="dropdown-item" onClick="setWordAmount(250)">
+                  250
+                </div>
               </div>
             </div>
           </div>
