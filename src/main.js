@@ -139,3 +139,5 @@ const setWordAmount = (wa) => {
     }
   });
 })();
+
+window.setWordAmount = setWordAmount; // Attaches setWordAmount function to the window, which is needed for parcel.
