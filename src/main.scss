@@ -52,12 +52,12 @@ body {
   margin-bottom: $spacer;
 }
 
-.stats {
-  display: flex;
-  align-items: center;
-  .btn-alt {
-    margin-right: $spacer;
-  }
+.justify-content-start {
+  justify-content: flex-start;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
 }
 
 .btn-alt {
@@ -65,20 +65,6 @@ body {
   padding: $spacer-2;
   border-radius: $spacer-1;
   background-color: #fff;
-}
-
-.wa {
-  flex: 1;
-  justify-content: end;
-  display: flex;
-  .btn-alt {
-    margin-left: $spacer;
-  }
-}
-
-.btn-wa {
-  cursor: pointer;
-  border: 0;
 }
 
 .game-container {
@@ -98,6 +84,21 @@ body {
 
 .flex-1 {
   flex: 1;
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  .btn-alt {
+    margin-left: $spacer-1;
+    margin-right: $spacer-1;
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }
 
 #wordInput {
@@ -159,15 +160,15 @@ body {
   background-color: #eee;
 }
 
-.dd {
+.dropdown {
   position: relative;
 }
 
-.dd-btn {
+.dropdown-btn {
   cursor: pointer;
 }
 
-.dd-content {
+.dropdown-content {
   position: absolute;
   display: none;
   top: calc(100% + 4px);
@@ -182,7 +183,7 @@ body {
   }
 }
 
-.dd-item {
+.dropdown-item {
   padding: $spacer-1 $spacer-2;
   display: block;
   width: 100%;

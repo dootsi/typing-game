@@ -100,31 +100,37 @@ const restartGame = () => {
 const setWordAmount = (wa) => {
   localStorage.setItem('wordAmount', wa);
   wordAmount = wa;
-  waContent.childNodes.forEach((child) => {
-    // eslint-disable-next-line no-param-reassign
-    child.className = 'dd-item';
+  document.getElementById('wordAmountPicker').childNodes.forEach((child) => {
+    child.className = 'dropdown-item';
   });
   document.getElementById('waContent');
-  document.getElementById(`wa${wa}`).className = 'dd-item active';
+  document.getElementById(`wa${wa}`).className = 'dropdown-item active';
   restartGame();
 };
 
+const toggleDropdown = (dropdownId) => {
+  const dropdown = document.getElementById(dropdownId);
+  dropdown.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+  if (dropdown.classList.contains('open')) {
+    dropdown.classList.remove('open');
+  } else {
+    dropdown.classList.add('open');
+  }
+};
+
 (() => {
-  window.addEventListener('click', () => {
-    if (waContent.classList.contains('open')) {
-      waContent.classList.remove('open');
+  window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('dropdown-btn')) {
+      return;
     }
-  });
-  waButton.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (waContent.classList.contains('open')) {
-      waContent.classList.remove('open');
-    } else {
-      waContent.classList.add('open');
-    }
-  });
-  waContent.addEventListener('click', (e) => {
-    e.stopPropagation();
+    const dropdowns = document.getElementsByClassName('dropdown-content');
+    Array.from(dropdowns).forEach((child) => {
+      if (child.classList.contains('open')) {
+        child.classList.remove('open');
+      }
+    });
   });
   if (localStorage.getItem('wordAmount')) {
     setWordAmount(localStorage.getItem('wordAmount'));
@@ -141,4 +147,6 @@ const setWordAmount = (wa) => {
   });
 })();
 
-window.setWordAmount = setWordAmount; // Attaches setWordAmount function to the window, which is needed for parcel.
+// Attach global functions to the window. This is needed for parcel.
+window.setWordAmount = setWordAmount;
+window.toggleDropdown = toggleDropdown;

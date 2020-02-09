@@ -9,30 +9,49 @@
   <body>
     <div class="game-wrapper">
       <div class="game-top">
-        <div class="stats">
-          <div class="btn-alt">WPM <span id="wpm">00</span></div>
-          <div class="btn-alt">TIME <span id="time">00</span></div>
+        <div class="d-flex flex-1 justify-content-start">
+          <div class="btn-group">
+            <div class="btn-alt">WPM <span id="wpm">00</span></div>
+            <div class="btn-alt">TIME <span id="time">00</span></div>
+          </div>
         </div>
-        <div class="wa">
-          <div class="dd">
-            <div class="btn-alt dd-btn" id="waButton">word amount</div>
-            <div class="dd-content" id="waContent">
-              <div class="dd-item" id="wa10" onClick="setWordAmount(10)">
+        <div class="d-flex flex-1 justify-content-end">
+          <div class="dropdown">
+            <div
+              class="btn-alt dropdown-btn"
+              onClick="toggleDropdown('wordAmountPicker')"
+            >
+              word amount
+            </div>
+            <div class="dropdown-content" id="wordAmountPicker">
+              <div class="dropdown-item" id="wa10" onClick="setWordAmount(10)">
                 10
               </div>
-              <div class="dd-item" id="wa25" onClick="setWordAmount(25)">
+              <div class="dropdown-item" id="wa25" onClick="setWordAmount(25)">
                 25
               </div>
-              <div class="dd-item" id="wa50" onClick="setWordAmount(50)">
+              <div class="dropdown-item" id="wa50" onClick="setWordAmount(50)">
                 50
               </div>
-              <div class="dd-item" id="wa100" onClick="setWordAmount(100)">
+              <div
+                class="dropdown-item"
+                id="wa100"
+                onClick="setWordAmount(100)"
+              >
                 100
               </div>
-              <div class="dd-item" id="wa250" onClick="setWordAmount(250)">
+              <div
+                class="dropdown-item"
+                id="wa250"
+                onClick="setWordAmount(250)"
+              >
                 250
               </div>
-              <div class="dd-item" id="wa500" onClick="setWordAmount(500)">
+              <div
+                class="dropdown-item"
+                id="wa500"
+                onClick="setWordAmount(500)"
+              >
                 500
               </div>
             </div>
